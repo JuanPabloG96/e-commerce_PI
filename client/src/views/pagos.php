@@ -9,21 +9,7 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100">
-  <header class="bg-gray-800 shadow-md">
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="../../public/images/HSLogo.png" alt="company logo" height="50" width="50">
-        <h1 class="text-2xl font-bold text-violet-300">HS Company</h1>
-      </div>
-      <nav>
-        <ul class="flex space-x-4">
-          <li><a href="#" class="text-gray-300 hover:text-violet-300">Inicio</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-violet-300">Carrito</a></li>
-          <li><a href="#" class="text-gray-300 hover:text-violet-300">Pedidos</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <?php include "../templates/header.php"?>
 
   <main class="container mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Proceso de Pago</h2>
@@ -120,11 +106,7 @@
     </div>
   </main>
 
-  <footer class="bg-gray-800 text-gray-300 py-6 mt-12">
-    <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2023 HASHERS. Todos los derechos reservados.</p>
-    </div>
-  </footer>
+  <?php include '../templates/footer.php'; ?>
 </body>
 
 </html>
