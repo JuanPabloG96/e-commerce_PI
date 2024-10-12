@@ -12,19 +12,15 @@
   <?php include 'src/templates/header.php'; ?>
 
   <main>
-    <section id="hero">
-      <h2>Proyecto de Comercio Electrónico</h2>
-      <p>Una aplicación de e-commerce simple y potente construida con PHP y MySQL</p>
-      <a href="#">
-        Empezar ahora
-        <img src="src/assets/images/arrow-right.svg" alt="arrow right">
-      </a>
+    <section class="hero" id="hero">
+      <h2 class="title hero-title">Proyecto de Comercio Electrónico</h2>
+      <p class="subtitle hero-subtitle">Una aplicación de e-commerce simple y potente construida con PHP y MySQL</p>
     </section>
 
-    <section id="about">
-      <h3>Acerca del Proyecto</h3>
-      <div>
-        <p>
+    <section id="about" class="section">
+      <h3 class="title">Acerca del Proyecto</h3>
+      <div class="container">
+        <p class="description">
           Este proyecto consiste en el desarrollo de una aplicación de comercio electrónico simple utilizando
           PHP como lenguaje de programación y MySQL como sistema de gestión de bases de datos. La arquitectura
           de la aplicación es monolítica, lo que significa que todos los módulos del sistema están integrados
@@ -34,18 +30,18 @@
       </div>
     </section>
 
-    <section id="modules">
-      <h3>Módulos Implementados</h3>
-      <div class="modules-cards"><!-- Informacion de los módulos --></div>
+    <section id="modules" class="section">
+      <h3 class="title">Módulos Implementados</h3>
+      <div class="modules-cards"><!-- Información de los módulos --></div>
     </section>
 
-    <section id="architecture">
-      <h3>Arquitectura de la Aplicación</h3>
-      <div>
+    <section id="architecture" class="section">
+      <h3 class="title">Arquitectura de la Aplicación</h3>
+      <div class="container">
         <div>
-          <img src="src/assets/images/monolithic.svg" alt="monolithic">
+          <img src="src/assets/images/monolithic.svg" alt="monolithic" height="80" width="80">
         </div>
-        <p>
+        <p class="description">
           La arquitectura del sistema se basa en el enfoque monolítico, donde todos los módulos como la
           gestión de productos, el carrito de compras, la autenticación de usuarios, el procesamiento de pagos
           y la base de datos están fuertemente acoplados y se ejecutan como una única aplicación. Esto
