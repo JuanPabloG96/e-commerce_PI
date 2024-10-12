@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="bg-gray-900">
+<html lang="es-MX">
 
 <head>
   <meta charset="UTF-8">
@@ -8,53 +8,44 @@
   <title>HASHERS - Módulo de Usuario</title>
 </head>
 
-<body class="min-h-screen bg-gray-900 text-gray-100">
+<body>
   <?php include "../templates/header.php"?>
 
-  <main class="container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-bold text-violet-300 mb-6">Módulo de Usuario</h2>
+  <main>
+    <h2>Módulo de Usuario</h2>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold text-violet-300 mb-4">Iniciar Sesión</h3>
+    <div>
+      <div>
+        <h3>Iniciar Sesión</h3>
         <form>
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label>
-            <input type="email" id="email" name="email"
-              class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
+          <div>
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email">
           </div>
-          <div class="mb-4">
-            <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
-            <input type="password" id="password" name="password"
-              class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
+          <div>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password">
           </div>
-          <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">
-            Iniciar Sesión
-          </button>
+          <button type="submit">Iniciar Sesión</button>
         </form>
       </div>
 
-      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold text-violet-300 mb-4">Registrarse</h3>
+      <div>
+        <h3>Registrarse</h3>
         <form>
-          <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
-            <input type="text" id="name" name="name"
-              class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
+          <div>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name">
           </div>
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label>
-            <input type="email" id="email" name="email"
-              class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
+          <div>
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email">
           </div>
-          <div class="mb-4">
-            <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
-            <input type="password" id="password" name="password"
-              class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
+          <div>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password">
           </div>
-          <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">
-            Registrarse
-          </button>
+          <button type="submit">Registrarse</button>
         </form>
       </div>
     </div>

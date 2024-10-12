@@ -11,85 +11,8 @@
 
 *, html {
   font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
-ul, ol {
-  list-style: none;
+body {
+  background-color: #111827;
 }
-
-a, li {
-  text-decoration: none;
-}
-
-/* HEADER */
-.header {
-  background-color: var(--slate-gray);
-  padding:  0 80px;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.company-name {
-  color: var(--violet-300);
-}
-
-.nav {
-  position: relative;
-}
-
-.nav-menu {
-  position: absolute;
-  display: none;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-link {
-  color: var(--white);
-}
-.nav-link:hover {
-  color: var(--violet-300);
-  text-decoration: underline;
-}
-
-.login-button {
-  background-color: var(--violet-600);
-  color: var(--white);
-  border: none;
-  padding: 5px 15px;
-}
-.login-button:hover {
-  background-color: var(--violet-300);
-  cursor: pointer;
-}
-.login-button .nav-link:hover {
-  color: var(--white);
-  text-decoration: none;
-}
-
-.login-button:active {
-  transform: scale(0.95);
-}
-
-/* Index Main */
-main{
-  background-color: var(--dark-blue);
-}
-
-/* Footer */

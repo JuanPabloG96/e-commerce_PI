@@ -53,7 +53,7 @@
 
   <?php include 'src/templates/footer.php' ?>
 
-  <script src="src/js/main.js" type="module"></script>
+  <script src="src/js/index.js" type="module"></script>
 </body>
 
 </html>
