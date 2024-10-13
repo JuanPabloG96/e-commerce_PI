@@ -1,106 +1,65 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es" class="bg-gray-900">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/main.css">
-  <title>HASHERS - Módulo de Pedidos</title>
+  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/output.css">
+  <title>HS - Pedidos</title>
 </head>
 
-<body>
+<body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
   <?php include "../templates/header.php"?>
 
-  <main>
-    <h2>Mis Pedidos</h2>
+  <main class="container mx-auto px-6 py-12 grow">
+    <h2 class="text-3xl font-bold text-violet-300 mb-6">Mis Pedidos</h2>
 
-    <div>
-      <table>
+    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
+      <table class="w-full">
         <thead>
-          <tr>
-            <th>Nº de Pedido</th>
-            <th>Fecha</th>
-            <th>Total</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+          <tr class="bg-gray-700">
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Número de Pedido
+            </th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Fecha</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Estado</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-gray-800 divide-y divide-gray-700">
           <tr>
-            <td>#1001</td>
-            <td>2023-05-15</td>
-            <td>$81.97</td>
-            <td>
-              <span>Entregado</span>
+            <td class="px-6 py-4 whitespace-nowrap">#1001</td>
+            <td class="px-6 py-4 whitespace-nowrap">2023-05-15</td>
+            <td class="px-6 py-4 whitespace-nowrap">$69.97</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                Entregado
+              </span>
             </td>
-            <td>
-              <a href="#">Ver detalles</a>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <a href="#" class="text-violet-300 hover:text-violet-400">Ver detalles</a>
             </td>
           </tr>
           <tr>
-            <td>#1002</td>
-            <td>2023-05-20</td>
-            <td>$129.99</td>
-            <td>
-              <span>En proceso</span>
+            <td class="px-6 py-4 whitespace-nowrap">#1002</td>
+            <td class="px-6 py-4 whitespace-nowrap">2023-05-20</td>
+            <td class="px-6 py-4 whitespace-nowrap">$129.99</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                En proceso
+              </span>
             </td>
-            <td>
-              <a href="#">Ver detalles</a>
-            </td>
-          </tr>
-          <tr>
-            <td>#1003</td>
-            <td>2023-05-25</td>
-            <td>$59.99</td>
-            <td>
-              <span>Enviado</span>
-            </td>
-            <td>
-              <a href="#">Ver detalles</a>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <a href="#" class="text-violet-300 hover:text-violet-400">Ver detalles</a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <div>
-      <h3>Detalles del Pedido #1001</h3>
-      <div>
-        <div>
-          <h4>Información del Pedido</h4>
-          <p>Fecha: 2023-05-15</p>
-          <p>Estado: Entregado</p>
-          <p>Total: $81.97</p>
-        </div>
-        <div>
-          <h4>Dirección de Envío</h4>
-          <p>Juan Pérez</p>
-          <p>Calle Principal 123</p>
-          <p>Ciudad, Estado 12345</p>
-          <p>País</p>
-        </div>
-      </div>
-      <div>
-        <h4>Productos</h4>
-        <ul>
-          <li>
-            <span>Producto 1 x 1</span>
-            <span>$19.99</span>
-          </li>
-          <li>
-            <span>Producto 2 x 2</span>
-            <span>$49.98</span>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <button>Descargar Factura</button>
-        <button>Contactar Soporte</button>
-      </div>
-    </div>
   </main>
 
-  <?php include '../templates/footer.php'; ?>
+  <?php include "../templates/footer.php"?>
 </body>
 
 </html>
