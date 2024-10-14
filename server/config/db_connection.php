@@ -11,7 +11,5 @@ if ($conn->connect_error) {
     die('Error de conexión (' . $conn->connect_errno . ') '
             . $conn->connect_error);
 }
-else {
-    echo 'Conectado';
-}
+
 $conn->set_charset("utf8mb4");

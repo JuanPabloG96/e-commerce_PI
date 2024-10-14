@@ -10,7 +10,15 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
-  <?php include "../templates/header.php"?>
+  <?php
+  session_start();
+
+  if (isset($_SESSION['user_id'])) {
+      include '../templates/header_usuario.php';
+  } else {
+      include '../templates/header.php';
+  }
+  ?>
 
   <main class="container mx-auto px-6 py-12 grow">
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Carrito de Compras</h2>

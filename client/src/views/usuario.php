@@ -10,7 +10,15 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
-  <?php include "../templates/header.php"?>
+  <?php
+  session_start();
+
+  if (isset($_SESSION['user_id'])) {
+      include '../templates/header_usuario.php';
+  } else {
+      include '../templates/header.php';
+  }
+  ?>
 
   <main class="container mx-auto px-6 py-12 grow">
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Módulo de Usuario</h2>
@@ -18,7 +26,7 @@
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-gray-800 p-6 rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Iniciar Sesión</h3>
-        <form action="/e-commerce/server/iniciar_sesion.php" method="POST">
+        <form action="/e-commerce/server/index.php?action=login" method="POST">
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo
               Electrónico</label>
@@ -38,7 +46,7 @@
 
       <div class="bg-gray-800 p-6 rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Registrarse</h3>
-        <form>
+        <form action="/e-commerce/server/index.php?action=register" method="POST">
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
             <input type="text" id="name" name="name"

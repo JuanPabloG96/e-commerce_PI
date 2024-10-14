@@ -1,5 +1,5 @@
 <?php
-require 'db_connection.php';
+include '../config/conexion.php';
 
 // Función para obtener todos los productos
 function getAllProducts() {

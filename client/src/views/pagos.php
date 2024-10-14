@@ -10,13 +10,21 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
-	<?php include "../templates/header.php"?>
+	<?php
+  session_start();
+
+  if (isset($_SESSION['user_id'])) {
+      include '../templates/header_usuario.php';
+  } else {
+      include '../templates/header.php';
+  }
+  ?>
 
 	<main class="container mx-auto px-6 py-12 grow">
 		<h2 class="text-3xl font-bold text-violet-300 mb-6">Proceso de Pago</h2>
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			<div class="bg-gray-800 rounded-lg shadow-md p-6">
+			<section class="bg-gray-800 rounded-lg shadow-md p-6">
 				<h3 class="text-xl font-semibold text-violet-300 mb-4">Detalles de Pago</h3>
 				<form>
 					<div class="mb-4">
@@ -51,7 +59,6 @@
 							class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-violet-500">
 							<option value="credit-card">Tarjeta de Crédito</option>
 							<option value="debit-card">Tarjeta de Débito</option>
-							<option value="paypal">PayPal</option>
 						</select>
 					</div>
 					<button type="submit"
@@ -59,9 +66,9 @@
 						Pagar $81.97
 					</button>
 				</form>
-			</div>
+			</section>
 
-			<div class="bg-gray-800 rounded-lg shadow-md p-6">
+			<section class="bg-gray-800 rounded-lg shadow-md p-6">
 				<h3 class="text-xl font-semibold text-violet-300 mb-4">Resumen del Pedido</h3>
 				<ul class="space-y-2 mb-4">
 					<li class="flex justify-between items-center">
@@ -85,29 +92,23 @@
 						<span class="text-gray-300">$5.00</span>
 					</li>
 					<li class="flex justify-between items-center border-t border-gray-700 pt-2 mt-2">
-						<span class="font-semibold text-violet-300">Total</span>
-						<span class="font-semibold text-violet-300">$81.97</span>
+						<span class="font-semibold text-violet-300 text-2xl">Total</span>
+						<span class="font-semibold text-violet-300 text-xl">$81.97</span>
 					</li>
 				</ul>
-				<div class="mb-4">
-					<label for="coupon" class="block text-sm font-medium text-gray-300 mb-2">Código de Descuento</label>
-					<div class="flex">
-						<input type="text" id="coupon" name="coupon" placeholder="Ingrese su código"
-							class="flex-grow px-3 py-2 bg-gray-700 border border-gray-600 rounded-l-md text-white focus:outline-none focus:ring-2 focus:ring-violet-500">
-						<button
-							class="px-4 py-2 bg-violet-600 text-white rounded-r-md hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500">
-							Aplicar
-						</button>
+				<div class="w-full border-t border-gray-700 pt-4 flex justify-between">
+					<div class="flex flex-col justify-between items-center mb-4">
+						<h4 class="text-lg font-semibold text-violet-300 mb-2">Dirección de Envío</h4>
+						<button class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">Editar dirección</button>
 					</div>
+					<div>
+						<p class="text-gray-400"><strong>Dirección: </strong>Calle Principal 123</p>
+						<p class="text-gray-400"><strong>Código Postal: </strong>32000</p>
+						<p class="text-gray-400"><strong>Ciudad: </strong>Ciudad Juarez, Chihuahua</p>
+						<p class="text-gray-400"><strong>País: </strong>Mexico</p>
+					</div>					
 				</div>
-				<div class="border-t border-gray-700 pt-4">
-					<h4 class="text-lg font-medium text-gray-300 mb-2">Dirección de Envío</h4>
-					<p class="text-gray-400">Juan Pérez</p>
-					<p class="text-gray-400">Calle Principal 123</p>
-					<p class="text-gray-400">Ciudad, Estado 12345</p>
-					<p class="text-gray-400">País</p>
-				</div>
-			</div>
+			</section>
 		</div>
 	</main>
 

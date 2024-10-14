@@ -1,5 +1,5 @@
-<header class="w-full bg-gray-800 px-20">
-    <div class="flex justify-between items-center p-4 max-w-[1200px]">
+<header class="w-full bg-gray-800 ">
+    <div class="flex justify-between items-center p-4 max-w-[1200px] mx-auto">
       <div class="flex flex-row gap-3 items-center">
         <img src="/e-commerce/client/src/assets/HSLogo.png" alt="company logo" height="50" width="50" class="company-logo">
         <h1 class="text-3xl font-bold text-violet-300">HS Company</h1>
