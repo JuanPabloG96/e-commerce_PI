@@ -18,7 +18,7 @@
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-gray-800 p-6 rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Iniciar Sesión</h3>
-        <form>
+        <form action="/e-commerce/server/iniciar_sesion.php" method="POST">
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo
               Electrónico</label>
