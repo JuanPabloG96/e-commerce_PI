@@ -2,11 +2,7 @@
 
 require '../config/conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $action = $_POST['action'] ?? '';
-} else {
-  $action = $_GET['action'] ?? '';
-}
+$action = $_GET['action'] ?? '';
 
 switch ($action) {
   case 'register':
