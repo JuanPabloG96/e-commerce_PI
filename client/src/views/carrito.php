@@ -11,6 +11,12 @@
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
   <?php
+
+  // show errors
+  ini_set('display_errors', 1); 
+  ini_set('display_startup_errors', 1); 
+  error_reporting(E_ALL);
+
   session_start();
 
   if (isset($_SESSION['user_id'])) {
@@ -20,57 +26,88 @@
   }
   ?>
 
+  <?php
+
+  if (!isset($_SESSION['user_id'])) {
+      header('Location: usuario.php');
+      exit();
+  }
+
+  require '../../../server/config/db_connection.php';
+
+  // Obtener el ID del usuario actual
+  $user_id = $_SESSION['user_id'];
+
+  // Consulta para obtener los productos en el carrito de este usuario
+  $sql = "SELECT ci.product_id, ci.quantity, p.name, p.price 
+        FROM cart_items ci
+        JOIN products p ON ci.product_id = p.id  -- Verifica que product_id sea correcto
+        WHERE ci.user_id = ?";
+
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  $total = 0;
+  ?>
+
   <main class="container mx-auto px-6 py-12 grow">
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Carrito de Compras</h2>
-
-    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden">
-      <table class="w-full">
+    <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden"><table class="w-full">
         <thead>
           <tr class="bg-gray-700">
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-              Producto</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-              Cantidad</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-              Precio</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-              Acciones</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Producto</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Cantidad</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Precio</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Total</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Acciones</th>
           </tr>
         </thead>
-        <tbody class="bg-gray-800  divide-y divide-gray-700">
-          <tr>
-            <td class="px-6 py-4 whitespace-nowrap">Producto 1</td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input type="number" value="1" min="1"
-                class="w-16 px-2 py-1 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">$19.99</td>
-            <td class="px-6 py-4 whitespace-nowrap">$19.99</td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <button class="text-red-500 hover:text-red-600">Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="px-6 py-4 whitespace-nowrap">Producto 2</td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input type="number" value="2" min="1"
-                class="w-16 px-2 py-1 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500">
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">$24.99</td>
-            <td class="px-6 py-4 whitespace-nowrap">$49.98</td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <button class="text-red-500 hover:text-red-600">Eliminar</button>
-            </td>
-          </tr>
+        <tbody class="bg-gray-800 divide-y divide-gray-700">
+        <?php
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $name = $row['name'];
+        $cantidad = $row['quantity'];
+        $precio = $row['price'];
+        $subtotal = $precio * $cantidad;
+        $total += $subtotal;
+?>
+<tr data-product-id="<?php echo $row['product_id']; ?>">  <!-- product_id asignado -->
+    <td class="px-6 py-4 whitespace-nowrap"><?php echo $name; ?></td>
+    <td class="px-6 py-4 whitespace-nowrap">
+        <input 
+            type="number" 
+            value="<?php echo $cantidad; ?>" 
+            min="1" 
+            class="w-16 px-2 py-1 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500" 
+            onchange="updateQuantity(<?php echo $row['product_id']; ?>, this.value)" >
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap product-price">$<?php echo number_format($precio, 2); ?></td>
+    <td class="px-6 py-4 whitespace-nowrap product-subtotal">$<?php echo number_format($subtotal, 2); ?></td>
+    <td class="px-6 py-4 whitespace-nowrap">
+        <button 
+            class="text-red-500 hover:text-red-600" 
+            onclick="deleteProduct(<?php echo $row['product_id']; ?>)">  <!-- Enviar product_id al eliminar -->
+            Eliminar
+        </button>
+    </td>
+</tr>
+<?php
+    }
+} else {
+    echo "<tr><td colspan='5' class='px-6 py-4 text-center'>El carrito está vacío.</td></tr>";
+}
+?>
+
         </tbody>
       </table>
     </div>
 
     <div class="mt-8 flex justify-between items-center">
-      <div class="text-2xl font-bold text-violet-300">
-        Total: $69.97
+      <div class="text-2xl font-bold text-violet-300" id="cart-total">
+        Total: $<?php echo number_format($total, 2); ?>
       </div>
       <button class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">
         Proceder al pago
@@ -78,7 +115,13 @@
     </div>
   </main>
 
+  <?php
+  $stmt->close();
+  $conn->close();
+  ?>
+
   <?php include "../templates/footer.php"?>
+  <script type="module" src="../js/carrito.js"></script>
 </body>
 
 </html>

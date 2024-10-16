@@ -20,7 +20,7 @@
           <li>
           <div class="relative group">
             <a href="/e-commerce/client/src/views/perfil_usuario.php">
-              <img src="" alt="avatar usuario" class="avatar h-10 w-10 rounded-full" onerror="this.onerror=null; this.src='/e-commerce/server/uploads/default.webp';">
+              <img src="" alt="avatar usuario" class="avatar h-10 w-10 rounded-full" onerror="this.onerror=null; this.src='/e-commerce/client/src/assets/default.webp';">
             </a>
             <div class="w-48 absolute right-0 hidden bg-gray-800 text-white rounded-lg shadow-lg group-hover:block">
               <ul class="p-2">

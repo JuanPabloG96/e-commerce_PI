@@ -1,10 +1,4 @@
 <?php
-
-// mostar errores
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 require '../config/db_connection.php';
 
@@ -14,51 +8,47 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-$product_id = $_POST['product_id']; 
-$quantity = 1; 
+$product_id = $_POST['product_id'];
 
-// Verificar si el carrito ya tiene productos del usuario actual
-$sql_check_cart = "SELECT * FROM cart_items WHERE user_id = ?";
-$stmt_check = $conn->prepare($sql_check_cart);
-$stmt_check->bind_param("i", $user_id);
-$stmt_check->execute();
-$result_check = $stmt_check->get_result();
+// Verificar si el producto ya está en el carrito
+$sql_check_product = "SELECT quantity FROM cart_items WHERE user_id = ? AND product_id = ?";
+$stmt_check_product = $conn->prepare($sql_check_product);
+$stmt_check_product->bind_param("ii", $user_id, $product_id);
 
-if ($result_check->num_rows > 0) {
-    // Verificar si hay un producto existente en el carrito
-    $sql_check_product = "SELECT quantity FROM cart_items WHERE user_id = ? AND product_id = ?";
-    $stmt_check_product = $conn->prepare($sql_check_product);
-    $stmt_check_product->bind_param("ii", $user_id, $product_id);
-    $stmt_check_product->execute();
-    $result_product = $stmt_check_product->get_result();
+if ($stmt_check_product->execute()) {
+    $result_check = $stmt_check_product->get_result();
 
-    if ($result_product->num_rows > 0) {
-        // El producto ya existe, actualizar la cantidad
-        $row = $result_product->fetch_assoc();
-        $new_quantity = $row['quantity'] + $quantity;
+    if ($result_check->num_rows > 0) {
+        // Producto ya en el carrito, actualiza la cantidad
+        $row = $result_check->fetch_assoc();
+        $new_quantity = $row['quantity'] + 1;
 
-        $sql_update_quantity = "UPDATE cart_items SET quantity = ? WHERE user_id = ? AND product_id = ?";
-        $stmt_update = $conn->prepare($sql_update_quantity);
+        // Actualizar cantidad
+        $sql_update = "UPDATE cart_items SET quantity = ? WHERE user_id = ? AND product_id = ?";
+        $stmt_update = $conn->prepare($sql_update);
         $stmt_update->bind_param("iii", $new_quantity, $user_id, $product_id);
         $stmt_update->execute();
+        $stmt_update->close();
     } else {
-        // El producto no existe, agregarlo al carrito
+        // Insertar nuevo producto en el carrito
         $sql_insert = "INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
+        $quantity = 1; // Cantidad inicial
         $stmt_insert->bind_param("iii", $user_id, $product_id, $quantity);
         $stmt_insert->execute();
+
+        // Solo cerrar si se inicializó correctamente
+        if (isset($stmt_insert)) {
+            $stmt_insert->close();
+        }
     }
 } else {
-    // El carrito está vacío para este usuario, agregar el producto
-    $sql_insert = "INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)";
-    $stmt_insert = $conn->prepare($sql_insert);
-    $stmt_insert->bind_param("iii", $user_id, $product_id, $quantity);
-    $stmt_insert->execute();
+    echo json_encode(['success' => false, 'message' => 'Error al verificar el producto en el carrito']);
 }
 
-// Cerrar conexiones
-$stmt_check->close();
-$stmt_check_product->close();
-$stmt_insert->close();
+// Cerrar declaración de verificación del producto
+if (isset($stmt_check_product)) {
+    $stmt_check_product->close();
+}
+
 $conn->close();
-?>
