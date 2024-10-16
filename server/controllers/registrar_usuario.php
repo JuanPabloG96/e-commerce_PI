@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 session_start(); 
 
-include '../config/conexion.php';
+include '../config/db_connection.php';
 
 // Verificar si los datos fueron enviados por POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

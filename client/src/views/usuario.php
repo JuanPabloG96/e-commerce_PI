@@ -58,7 +58,7 @@
       <!-- Formulario de Registro -->
       <div id="register-form" class="bg-gray-800 p-6 rounded-lg shadow-md hidden">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Registrarse</h3>
-        <form action="/e-commerce/server/index.php?action=register" method="POST">
+        <form action="/e-commerce/server/controllers/registrar_usuario.php" method="POST">
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
             <input type="text" id="name" name="name"

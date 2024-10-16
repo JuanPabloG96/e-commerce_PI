@@ -27,7 +27,7 @@
                 <li class="px-4 py-2 hover:bg-violet-600 cursor-pointer">
                   <a href="/e-commerce/client/src/views/perfil_usuario.php">Editar perfil</a>
                 </li>
-                <li class="px-4 py-2 hover:bg-violet-600 cursor-pointer">
+                <li class="px-4 py-2 hover:bg-violet-600 cursor-pointer" id="cerrar-sesion">
                   Cerrar sesión
                 </li>
               </ul>
@@ -38,3 +38,27 @@
       </nav>
     </div>
 </header>
+
+<script>
+  document.getElementById('cerrar-sesion').addEventListener('click', () => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/e-commerce/server/controllers/cerrar_sesion.php', true);
+
+    // Manejar la respuesta de la solicitud
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // Redirigir al usuario a la página de inicio después de cerrar sesión
+        window.location.href = '/e-commerce/client/';
+      } else {
+        // Mostrar un mensaje de error si la solicitud falla
+        alert('Hubo un problema al cerrar sesión. Por favor, inténtelo de nuevo.');
+      }
+    };
+
+    xhr.onerror = function() {
+      alert('Error de red. No se pudo cerrar la sesión.');
+    };
+
+    xhr.send();
+  });
+</script>
