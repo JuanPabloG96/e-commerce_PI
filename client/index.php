@@ -26,6 +26,19 @@
       <p class="text-xl text-gray-300 mb-8">Una aplicación de e-commerce simple y potente construida con PHP y MySQL</p>
     </section>
 
+    <section id="mision-vision" class="mb-16">
+      <h3 class="text-2xl font-bold text-violet-300 mb-4">Misión y Visión de la empresa</h3>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md h-fit">
+        <p class="text-gray-300">
+          <strong>Misión:</strong>
+          Nos dedicamos a crear experiencias web que no solo funcionen, sino que también sorprendan. Hacemos que las empresas, grandes y pequeñas, brillen en el mundo digital. Nos apasiona lo que hacemos, nos mantenemos siempre curiosos y nos encanta llevar las tecnologías web al siguiente nivel, todo mientras nos divertimos en el proceso.
+          <br><br>
+          <strong>Visión:</strong>
+          Queremos ser el equipo al que acudes cuando necesitas transformar tus ideas en soluciones digitales impactantes. Creemos en un mundo donde la tecnología es accesible, funcional y, sobre todo, ¡divertida! Nuestra meta es que cada línea de código que escribimos acerque a las personas a lo que realmente les importa.
+        </p>
+      </div>
+    </section>
+
     <section id="about" class="mb-16">
       <h3 class="text-2xl font-bold text-violet-300 mb-4">Acerca del Proyecto</h3>
       <div class="bg-gray-800 p-6 rounded-lg shadow-md">

@@ -33,15 +33,15 @@ if ($stmt_check_product->execute()) {
         // Insertar nuevo producto en el carrito
         $sql_insert = "INSERT INTO cart_items (user_id, product_id, quantity) VALUES (?, ?, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
-        $quantity = 1; // Cantidad inicial
+        $quantity = 1;
         $stmt_insert->bind_param("iii", $user_id, $product_id, $quantity);
         $stmt_insert->execute();
 
-        // Solo cerrar si se inicializó correctamente
         if (isset($stmt_insert)) {
             $stmt_insert->close();
         }
     }
+    echo json_encode(['success' => true, 'message' => 'Producto agregado al carrito']);
 } else {
     echo json_encode(['success' => false, 'message' => 'Error al verificar el producto en el carrito']);
 }

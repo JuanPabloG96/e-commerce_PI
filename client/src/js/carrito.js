@@ -26,26 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   };
 
-  /* // Función para actualizar la cantidad de un producto en el carrito
-  window.updateQuantity = function updateQuantity(productId, quantity) {
-    fetch('/e-commerce/server/controllers/actualizar_cantidad.php', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: productId, quantity: quantity }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      if(data.status !== 'success') {
-        alert('Error al actualizar la cantidad: ' + data.message);
-      }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-  } */
-
     // Función para actualizar la cantidad de un producto en el carrito
   window.updateQuantity = function updateQuantity(productId, quantity) {
     fetch('/e-commerce/server/controllers/actualizar_cantidad.php', {
