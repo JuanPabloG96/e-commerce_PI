@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../styles/output.css">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/e-commerce/client/styles/output.css">
   <title>HS - Editar Perfil</title>
 </head>
 
@@ -14,9 +14,9 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-    include '../templates/header_usuario.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header_usuario.php';
   } else {
-    include '../templates/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header.php';
   }
   ?>
 
@@ -135,8 +135,8 @@
     </div>
   </main>
 
-  <?php include '../templates/footer.php'; ?>
-  <script type="module" src="../js/perfil_usuario.js"></script>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/e-commerce/client/templates/footer.php" ?>
+  <script type="module" src="/e-commerce/client/js/perfil_usuario.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   // Función para eliminar un producto del carrito
   window.deleteProduct = function(productId) {
-      fetch('/e-commerce/server/controllers/eliminar_producto.php', {
+      fetch('/e-commerce/server/controllers/products/eliminar_producto.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (productRow) {
                 productRow.remove();
             }
+            recalculateTotal();
         } else {
             alert('Error al eliminar el producto: ' + data.message);
         }
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Función para actualizar la cantidad de un producto en el carrito
   window.updateQuantity = function updateQuantity(productId, quantity) {
-    fetch('/e-commerce/server/controllers/actualizar_cantidad.php', {
+    fetch('/e-commerce/server/controllers/products/actualizar_cantidad.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

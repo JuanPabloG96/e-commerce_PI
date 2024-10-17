@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="src/assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="src/styles/output.css">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/e-commerce/client/styles/output.css">
   <title>HS - Proyecto de Comercio Electrónico</title>
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
-<?php
+  <?php
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-      include 'src/templates/header_usuario.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header_usuario.php';
   } else {
-      include 'src/templates/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header.php';
   }
   ?>
 
@@ -104,7 +104,7 @@
     </section>
   </main>
 
-  <?php include "src/templates/footer.php" ?>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/e-commerce/client/templates/footer.php" ?>
 </body>
 
 </html>

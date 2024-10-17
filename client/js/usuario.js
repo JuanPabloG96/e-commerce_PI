@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Manejar el envío del formulario de inicio de sesión
   loginForm.addEventListener('submit', (e) => {
     if (!validateForm(loginForm)) {
-      e.preventDefault(); // Evitar el envío si hay errores
+      e.preventDefault();
     }
   });
 

@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../styles/output.css">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/e-commerce/client/styles/output.css">
   <title>HS - Tienda</title>
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-gray-900 to-violet-700 text-gray-100 flex flex-col">
-  <?php
+<?php
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-      include '../templates/header_usuario.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header_usuario.php';
   } else {
-      include '../templates/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header.php';
   }
   ?>
 
@@ -24,7 +24,7 @@
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Catálogo de Productos</h2>
 
   <?php
-  require '../../../server/config/db_connection.php'; // Asegúrate de que la ruta es correcta
+  require $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
   if ($conn->connect_error) {
       die("Error de conexión: " . $conn->connect_error);
@@ -65,8 +65,8 @@
   ?>
   </main>
 
-  <?php include "../templates/footer.php" ?>
-  <script src="../js/productos.js" type="module"></script>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/e-commerce/client/templates/footer.php" ?>
+  <script src="/e-commerce/client/js/productos.js" type="module"></script>
 </body>
 
 </html>

@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../styles/output.css">
+  <link rel="shortcut icon" href="/e-commerce/client/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/e-commerce/client/styles/output.css">
   <title>HS - Inicio de sesión</title>
   <style>
     .hidden {
@@ -23,9 +23,9 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-      include '../templates/header_usuario.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header_usuario.php';
   } else {
-      include '../templates/header.php';
+    include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/client/templates/header.php';
   }
   ?>
 
@@ -36,7 +36,7 @@
       <!-- Formulario de Inicio de Sesión -->
       <div id="login-form" class="bg-gray-800 p-6 rounded-lg shadow-md">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Iniciar Sesión</h3>
-        <form action="/e-commerce/server/controllers/iniciar_sesion.php" method="POST">
+        <form action="/e-commerce/server/controllers/users/iniciar_sesion.php" method="POST">
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Correo Electrónico</label>
             <input type="email" id="email" name="email"
@@ -58,7 +58,7 @@
       <!-- Formulario de Registro -->
       <div id="register-form" class="bg-gray-800 p-6 rounded-lg shadow-md hidden">
         <h3 class="text-xl font-semibold text-violet-300 mb-4">Registrarse</h3>
-        <form action="/e-commerce/server/controllers/registrar_usuario.php" method="POST">
+        <form action="/e-commerce/server/controllers/users/registrar_usuario.php" method="POST">
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
             <input type="text" id="name" name="name"
@@ -85,14 +85,11 @@
       <button id="toggle-button" class="max-w-[150px] mb-6 bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded self-end">
         Registrarse
       </button>
-    </div>
-    <!-- Botón para alternar entre login y registro -->
-    
+    </div>    
   </main>
 
-  <?php include '../templates/footer.php'; ?>
-
-  <script type="module" src="../js/usuario.js"></script>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/e-commerce/client/templates/footer.php" ?>
+  <script type="module" src="/e-commerce/client/js/usuario.js"></script>
 </body>
 
 </html>
