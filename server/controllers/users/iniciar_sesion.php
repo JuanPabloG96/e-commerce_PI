@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 session_start();
 
 // Importar el archivo de conexión a la base de datos
-include '../config/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
 // Verifica si se recibió la solicitud POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,10 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: /e-commerce/client/'); 
             exit;
         } else {
-            header('Location: /e-commerce/client/src/views/usuario.php');
+            $_SESSION['error_message'] = 'Usuario o contraseña incorrectos.';
+            header('Location: /e-commerce/client/views/usuario.php');
         }
     } else {
-        header('Location: /e-commerce/client/src/views/usuario.php');
+        header('Location: /e-commerce/client/views/usuario.php');
     }
 
     $stmt->close();

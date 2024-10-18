@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../config/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['status' => 'error', 'message' => 'Usuario no autenticado']);

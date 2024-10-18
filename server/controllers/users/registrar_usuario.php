@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 session_start(); 
 
-include '../config/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
 // Verificar si los datos fueron enviados por POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->num_rows > 0) {
       $_SESSION['error'] = "Este correo electrónico ya está registrado.";
-      header("Location: /e-commerce/client/src/views/usuario.php");
+      header("Location: /e-commerce/client/views/usuario.php");
     }
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

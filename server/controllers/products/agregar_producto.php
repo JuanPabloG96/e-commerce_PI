@@ -1,9 +1,14 @@
 <?php
+// ver errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-require '../config/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /path/to/login.php');
+    header('Location: /e-commerce/client/views/usuario.php');
     exit();
 }
 
