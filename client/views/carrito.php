@@ -23,7 +23,7 @@
   <?php
 
   if (!isset($_SESSION['user_id'])) {
-      header('Location: usuario.php');
+      header('Location: /e-commerce/client/views/usuario.php');
       exit();
   }
 
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
         $subtotal = $precio * $cantidad;
         $total += $subtotal;
 ?>
-<tr data-product-id="<?php echo $row['product_id']; ?>">  <!-- product_id asignado -->
+<tr data-product-id="<?php echo $row['product_id']; ?>">
     <td class="px-6 py-4 whitespace-nowrap"><?php echo $name; ?></td>
     <td class="px-6 py-4 whitespace-nowrap">
         <input 
@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
     <td class="px-6 py-4 whitespace-nowrap">
         <button 
             class="text-red-500 hover:text-red-600" 
-            onclick="deleteProduct(<?php echo $row['product_id']; ?>)">  <!-- Enviar product_id al eliminar -->
+            onclick="deleteProduct(<?php echo $row['product_id']; ?>)">
             Eliminar
         </button>
     </td>
@@ -103,9 +103,9 @@ if ($result->num_rows > 0) {
       <div class="text-2xl font-bold text-violet-300" id="cart-total">
         Total: $<?php echo number_format($total, 2); ?>
       </div>
-      <button class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded">
+      <a class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded" href="/e-commerce/client/views/pagos.php">
         Proceder al pago
-      </button>
+      </a>
     </div>
   </main>
 

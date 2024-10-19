@@ -2,7 +2,9 @@
 module.exports = {
   content: [
     "./**/*.{js,jsx,ts,tsx,php}",
-    "./index.php"
+    "!./node_modules/**/*",
+    "!./server/**/*",
+    "!./vendor/**/*",
   ],
   theme: {
     extend: {

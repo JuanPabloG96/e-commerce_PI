@@ -32,7 +32,7 @@ function addToCart(productId) {
     // Set a timeout to remove the message after 3 seconds
     setTimeout(() => {
       messageDiv.remove();
-    }, 3000);
+    }, 1000);
   })
   .catch(error => {
       console.error('Error:', error);
@@ -44,7 +44,7 @@ function addToCart(productId) {
       
       setTimeout(() => {
         errorMessageDiv.remove();
-      }, 3000);
+      }, 1000);
   });
 }
 
