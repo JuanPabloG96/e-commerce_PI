@@ -21,11 +21,6 @@
 	?>
 
   <?php
-	/* // mostrar errores
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL); */
-
 	include $_SERVER['DOCUMENT_ROOT'] . '/e-commerce/server/config/db_connection.php';
 
 	if (isset($_SESSION['user_id'])) {
@@ -48,7 +43,7 @@
 			$payment_data = $payment_result->fetch_assoc();
 
       // Consulta para obtener los artículos del carrito
-      $cart_query = "SELECT ci.quantity, p.name, p.price 
+      $cart_query = "SELECT ci.id, ci.quantity, p.name, p.price 
       FROM cart_items ci 
       JOIN products p ON ci.product_id = p.id 
       WHERE ci.user_id = ?";
@@ -75,7 +70,7 @@
           ?>
             <li class="flex justify-between items-center">
               <span class="text-gray-300"><?php echo $name; ?></span>
-              <span class="text-gray-300">$<?php echo $product_total; ?></span>
+              <span class="text-gray-300">$<?php echo number_format($product_total, 2); ?></span>
             </li>
           <?php 
           }
@@ -86,18 +81,19 @@
           </li>
           <li class="flex justify-between items-center">
             <span class="text-gray-300">Envío</span>
-            <span class="text-gray-300">$<?php $shipping_price = 5.00; echo number_format($shipping_price, 2); ?></span>
+            <span class="text-gray-300">$<?php $shipping_price = 5; echo number_format($shipping_price, 2); ?></span>
           </li>
           <li class="flex justify-between items-center border-t border-gray-700 pt-2 mt-2">
             <span class="font-semibold text-violet-300 text-2xl">Total</span>
-            <span class="font-semibold text-violet-300 text-xl">$<?php echo $total + $shipping_price; ?></span>
+            <span class="font-semibold text-violet-300 text-xl">$<?php echo number_format($total + $iva + $shipping_price, 2); ?></span>
           </li>
         </ul>
         <button 
-          class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded self-end" 
-          onclick='proceedToPayment()'>
-          proceder al pago
+          class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded self-end" id="pay-button"
+          onclick='proceedToPayment(<?php echo $user_id; ?>, <?php echo $total + $iva + $shipping_price; ?>)'>
+          Proceder al pago
         </button>
+
       </section>
 
       <!-- Datos de envío y método de pago -->
