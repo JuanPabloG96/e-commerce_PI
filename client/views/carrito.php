@@ -60,40 +60,41 @@
         </thead>
         <tbody class="bg-gray-800 divide-y divide-gray-700">
         <?php
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $name = $row['name'];
-        $cantidad = $row['quantity'];
-        $precio = $row['price'];
-        $subtotal = $precio * $cantidad;
-        $total += $subtotal;
-?>
-<tr data-product-id="<?php echo $row['product_id']; ?>">
-    <td class="px-6 py-4 whitespace-nowrap"><?php echo $name; ?></td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <input 
-            type="number" 
-            value="<?php echo $cantidad; ?>" 
-            min="1" 
-            class="w-16 px-2 py-1 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500" 
-            onchange="updateQuantity(<?php echo $row['product_id']; ?>, this.value)" >
-    </td>
-    <td class="px-6 py-4 whitespace-nowrap product-price">$<?php echo number_format($precio, 2); ?></td>
-    <td class="px-6 py-4 whitespace-nowrap product-subtotal">$<?php echo number_format($subtotal, 2); ?></td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <button 
-            class="text-red-500 hover:text-red-600" 
-            onclick="deleteProduct(<?php echo $row['product_id']; ?>)">
-            Eliminar
-        </button>
-    </td>
-</tr>
-<?php
-    }
-} else {
-    echo "<tr><td colspan='5' class='px-6 py-4 text-center'>El carrito está vacío.</td></tr>";
-}
-?>
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $name = $row['name'];
+                $cantidad = $row['quantity'];
+                $precio = $row['price'];
+                $subtotal = $precio * $cantidad;
+                $total += $subtotal;
+        ?>
+        <tr data-product-id="<?php echo $row['product_id']; ?>">
+            <td class="px-6 py-4 whitespace-nowrap"><?php echo $name; ?></td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <input 
+                    type="number" 
+                    value="<?php echo $cantidad; ?>" 
+                    min="1" 
+                    class="w-16 px-2 py-1 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:border-violet-500" 
+                    onchange="updateQuantity(<?php echo $row['product_id']; ?>, this.value)" >
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap product-price">$<?php echo number_format($precio, 2); ?></td>
+            <td class="px-6 py-4 whitespace-nowrap product-subtotal">$<?php echo number_format($subtotal, 2); ?></td>
+            <td class="px-6 py-4 whitespace-nowrap">
+                <button 
+                    class="text-red-500 hover:text-red-600" 
+                    onclick="deleteProduct(<?php echo $row['product_id']; ?>)">
+                    Eliminar
+                </button>
+            </td>
+        </tr>
+        <?php }} else { ?>
+            <tr></tr>
+                <td colspan="5" class="px-6 py-4 whitespace-nowrap text-center">
+                    No hay productos en el carrito.
+                </td>
+            </tr>
+        <?php } ?>
 
         </tbody>
       </table>

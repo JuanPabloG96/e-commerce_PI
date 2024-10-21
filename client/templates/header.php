@@ -12,9 +12,6 @@
           <li><a href="/e-commerce/client/views/productos.php">
             <img src="/e-commerce/client/assets/icons/store.svg" alt="productos icon" title="productos" width="20" height="20" >
           </a></li>
-          <li><a href="/e-commerce/client/views/carrito.php" >
-            <img src="/e-commerce/client/assets/icons/cart.svg" alt="carrito icon" title="carrito" width="20" height="20">
-          </a></li>
           <li><a href="/e-commerce/client/views/usuario.php" class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded">Iniciar sesión</a></li>
         </ul>
       </nav>

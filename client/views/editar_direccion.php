@@ -37,7 +37,7 @@
   }
   ?>
 
-  <main class="container mx-auto px-6 py-12 grow">
+  <main class="container mx-auto px-6 py-12 grow max-w-[750px]">
     <h2 class="text-3xl font-bold text-violet-300 mb-6">Editar Dirección</h2>
 
     <section class="bg-gray-800 rounded-lg shadow-md p-6">

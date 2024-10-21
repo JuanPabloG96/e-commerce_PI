@@ -20,7 +20,7 @@
   }
   ?>
 
-  <main class="container mx-auto px-6 py-12 grow">
+  <main class="container mx-auto px-6 py-12 grow max-w-[1200px]">
     <section id="hero" class="text-center mb-16">
       <h2 class="text-4xl font-bold text-violet-300 mb-4">Proyecto de Comercio Electrónico</h2>
       <p class="text-xl text-gray-300 mb-8">Una aplicación de e-commerce simple y potente construida con PHP y MySQL</p>

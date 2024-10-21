@@ -641,8 +641,8 @@ video {
   margin-bottom: 2rem;
 }
 
-.ml-4 {
-  margin-left: 1rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .mt-2 {
@@ -685,6 +685,10 @@ video {
   height: 4rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .h-48 {
   height: 12rem;
 }
@@ -692,6 +696,14 @@ video {
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .min-h-screen {
@@ -706,16 +718,20 @@ video {
   width: 4rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-48 {
   width: 12rem;
 }
 
-.w-auto {
-  width: auto;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .max-w-\[1200px\] {
@@ -726,20 +742,12 @@ video {
   max-width: 150px;
 }
 
-.max-w-\[200px\] {
-  max-width: 200px;
-}
-
 .max-w-\[650px\] {
   max-width: 650px;
 }
 
 .max-w-\[750px\] {
   max-width: 750px;
-}
-
-.flex-grow {
-  flex-grow: 1;
 }
 
 .grow {
@@ -874,6 +882,11 @@ video {
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 
+.bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+
 .bg-gray-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -897,6 +910,11 @@ video {
 .bg-green-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
+.bg-purple-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 232 255 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
@@ -1070,6 +1088,11 @@ video {
   letter-spacing: 0.05em;
 }
 
+.text-blue-800 {
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+
 .text-gray-100 {
   --tw-text-opacity: 1;
   color: rgb(243 244 246 / var(--tw-text-opacity));
@@ -1093,6 +1116,11 @@ video {
 .text-green-800 {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
+}
+
+.text-purple-800 {
+  --tw-text-opacity: 1;
+  color: rgb(107 33 168 / var(--tw-text-opacity));
 }
 
 .text-red-400 {
@@ -1154,11 +1182,6 @@ video {
 .hover\:text-red-600:hover {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
-}
-
-.hover\:text-violet-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(167 139 250 / var(--tw-text-opacity));
 }
 
 .focus\:border-violet-500:focus {

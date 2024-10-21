@@ -85,12 +85,12 @@
           </li>
           <li class="flex justify-between items-center border-t border-gray-700 pt-2 mt-2">
             <span class="font-semibold text-violet-300 text-2xl">Total</span>
-            <span class="font-semibold text-violet-300 text-xl">$<?php echo number_format($total + $iva + $shipping_price, 2); ?></span>
+            <span class="font-semibold text-violet-300 text-xl">$<?php $gran_total = $total + $iva + $shipping_price; echo number_format($gran_total, 2); ?></span>
           </li>
         </ul>
         <button 
           class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded self-end" id="pay-button"
-          onclick='proceedToPayment(<?php echo $user_id; ?>, <?php echo $total + $iva + $shipping_price; ?>)'>
+          onclick='proceedToPayment(<?php echo $gran_total; ?>)'>
           Proceder al pago
         </button>
 
